@@ -1,4 +1,41 @@
-state("rabiribi", "v2.01")
+state("rabiribi", "v2.01Jan26")
+{
+	uint playtime: "rabiribi.exe", 0x016B3038; // SaveData[0x80B8]
+	uint tplaytime: "rabiribi.exe", 0x016B48D0; // SaveData[0x9950]
+	uint runtime: "rabiribi.exe", 0x016B3200; // SaveData[0x8280]
+	uint truntime: "rabiribi.exe", 0x016B48D4; // SaveData[0x9954]
+
+	uint blackness: "rabiribi.exe", 0x01724028;
+	uint minimapstate: "rabiribi.exe", 0x01724A8C; // 0 is bottom, 1 is top
+	uint eventid: "rabiribi.exe", 0x017240AC; // 5 is when a boss is defeated
+
+	uint musicid: "rabiribi.exe", 0x008849C8;
+	uint bgfilterid: "rabiribi.exe", 0x0172913C; // 0 is default, 6 is alius
+
+	uint mapid: "rabiribi.exe", 0x00DDBFA0;
+	float xpos: "rabiribi.exe", 0x016C13D8, 0x14;
+	float ypos: "rabiribi.exe", 0x016C13D8, 0x18;
+
+	uint moneytotal: "rabiribi.exe", 0x016B422C; // SaveData[0x92AC]
+	ushort eggtotal: "rabiribi.exe", 0x016B4D34; // SaveData[0x9DB4]
+
+	// 1 = Title Screen, 6 = Main Menu, 2 = In-Game, 17 = Scenario Select, etc
+	uint gamestate: "rabiribi.exe", 0x008849FC;
+
+	uint menustate: "rabiribi.exe", 0x01725C5C;
+	uint savecursor: "rabiribi.exe", 0x01768F90;
+
+	// 0x70C bytes for each entity
+	float artbookactivetime: "rabiribi.exe", 0x016C13D8, 0x1358; // 0x70C*2 + 0x540
+	float artbooktimer: "rabiribi.exe", 0x016C13D8, 0xB56C; // 0x70C*19 + 0x540
+	
+	uint userita: "rabiribi.exe", 0x016B2A9C; // SaveData[0x7B1C]
+	uint warphom: "rabiribi.exe", 0x016B20C0; // SaveData[0x7140]
+	uint warpfc2: "rabiribi.exe", 0x016B20C4; // SaveData[0x7144]
+	byte1664 itemarray: "rabiribi.exe", 0x016B200C; // SaveData[0x708C]
+}
+
+state("rabiribi", "v2.01Feb23")
 {
 	uint playtime: "rabiribi.exe", 0x01673FD0;
 	uint tplaytime: "rabiribi.exe", 0x01675868;
@@ -262,14 +299,16 @@ startup
 
 init
 {
-	if(modules.First().ModuleMemorySize == 0x10CE000)
+	if(modules.First().ModuleMemorySize == 0x010CE000)
 		version = "v1.65";	// for legacy categories
-	else if(modules.First().ModuleMemorySize == 0x1877000)
+	else if(modules.First().ModuleMemorySize == 0x01877000)
 		version = "v2.00Feb";	// for TASing
-	else if(modules.First().ModuleMemorySize == 0x1875000)
-		version = "v2.00Apr";	// previous version
-	else if(modules.First().ModuleMemorySize == 0x1870000)
-		version = "v2.01";	// latest version
+	else if(modules.First().ModuleMemorySize == 0x01875000)
+		version = "v2.00Apr";	// last v2.00 version
+	else if(modules.First().ModuleMemorySize == 0x01870000)
+		version = "v2.01Feb23";	// previous version
+	else if(modules.First().ModuleMemorySize == 0x018DA000)
+		version = "v2.01Jan26";	// latest version
 	else
 		version = "v1.99t";	// stable version. to be honest we don't need to keep this version anymore
 	
