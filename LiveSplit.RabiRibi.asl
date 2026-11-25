@@ -22,7 +22,7 @@ state("rabiribi", "v2.01Jan26")
 	// 1 = Title Screen, 6 = Main Menu, 2 = In-Game, 17 = Scenario Select, etc
 	uint gamestate: "rabiribi.exe", 0x008849FC;
 
-	uint menustate: "rabiribi.exe", 0x01725C5C;
+	uint menustate: "rabiribi.exe", 0x01768F88;
 	uint savecursor: "rabiribi.exe", 0x01768F90;
 
 	// 0x70C bytes for each entity
@@ -30,8 +30,8 @@ state("rabiribi", "v2.01Jan26")
 	float artbooktimer: "rabiribi.exe", 0x016C13D8, 0xB56C; // 0x70C*19 + 0x540
 	
 	uint userita: "rabiribi.exe", 0x016B2A9C; // SaveData[0x7B1C]
-	uint warphom: "rabiribi.exe", 0x016B20C0; // SaveData[0x7140]
-	uint warpfc2: "rabiribi.exe", 0x016B20C4; // SaveData[0x7144]
+	uint warphom: "rabiribi.exe", 0x016B30D8; // SaveData[0x8158]
+	uint warpfc2: "rabiribi.exe", 0x016B30DC; // SaveData[0x815C]
 	byte1664 itemarray: "rabiribi.exe", 0x016B200C; // SaveData[0x708C]
 }
 
